@@ -1,8 +1,9 @@
 package com.scheduleTest.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import com.scheduleTest.entity.Member;
 import com.scheduleTest.service.MemberService;
 
@@ -28,7 +28,7 @@ public class CinemaController {
 		// Step1. 檢查URL的memberId是否為數字
 		Integer id;
         try {
-         	id= Integer.parseInt(memberId);
+         	id = Integer.parseInt(memberId);
         }catch (Exception e) {
         	return new ResponseEntity<>("ID輸入不正確",HttpStatus.OK);
         }
@@ -40,6 +40,27 @@ public class CinemaController {
 			return new ResponseEntity<>(gson.toJson(member), HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>("查無該使用者ID: " + id ,HttpStatus.OK);
+		}
+	}
+	@RequestMapping(path = "/getMemberByName/{memberName}", method = RequestMethod.GET)
+	public ResponseEntity<String> getMemberByName(@PathVariable String memberName) {
+	    List<Member> members = memberService.getMemberByName(memberName);
+
+	    if (!members.isEmpty()) {
+	        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	        return new ResponseEntity<>(gson.toJson(members), HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>("查無符合條件的使用者：" + memberName, HttpStatus.OK);
+	    }
+	}
+	@RequestMapping(path = "/getMemberByHql/{memberName}", method = RequestMethod.GET)
+	public ResponseEntity<String> getMemberByHql(@PathVariable String memberName) {
+		List<Member> members = memberService.getMemberByHql(memberName);
+		
+		if (!members.isEmpty()) {
+			return new ResponseEntity<>(new Gson().toJson(members), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>("查無符合條件的使用者：" + memberName, HttpStatus.OK);
 		}
 	}
 }

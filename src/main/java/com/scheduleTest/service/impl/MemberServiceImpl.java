@@ -18,10 +18,43 @@ public class MemberServiceImpl implements MemberService{
 	MemberRepository memberRepository;
 	
 	@Override
-	public Member getMember(Integer memberId){
-//		memberRepository.findById(memberId).orElse(null);
-//		List<Member> result = memberRepository.findMemberNativeSql("addy");
+	public Member getMember(Integer memberId){		
 		return memberRepository.findById(memberId).orElse(null);
 	}
-
+	@Override
+	public List<Member> getMemberByName(String memberName) {
+	    List<Member> result = memberRepository.findMemberNativeSql(memberName);
+	    return result;
+	}
+	@Override
+	public List<Member> getMemberByHql(String memberName) {
+		List<Member> result = memberRepository.findMemberHql(memberName);
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,6 +14,6 @@ public interface MemberRepository extends JpaRepository<Member, Integer>{
             nativeQuery = true)
     List<Member> findMemberNativeSql(@Param("mbName") String memberName);
 	
-	@Query(value = "from Member where name =?1")
-    List<Member> findMemberHql(String memberName);
+	@Query(value = "from Member where name =:memberName")
+    List<Member> findMemberHql(@Param("memberName") String memberName);
 }
