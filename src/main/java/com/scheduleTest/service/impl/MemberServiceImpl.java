@@ -31,6 +31,11 @@ public class MemberServiceImpl implements MemberService{
 		List<Member> result = memberRepository.findMemberHql(memberName);
 		return result;
 	}
+	@Override
+	public List<Member> findMemberByWords(String name) {
+		List<Member> result = memberRepository.findMemberByWords(name);
+		return result;
+	}
 	
 	
 	

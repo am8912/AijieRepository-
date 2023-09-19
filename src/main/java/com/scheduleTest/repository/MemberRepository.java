@@ -16,4 +16,7 @@ public interface MemberRepository extends JpaRepository<Member, Integer>{
 	
 	@Query(value = "from Member where name =:memberName")
     List<Member> findMemberHql(@Param("memberName") String memberName);
+	
+	@Query(value = "from Member where name like %:n%")
+	List<Member> findMemberByWords(@Param("n") String name);
 }

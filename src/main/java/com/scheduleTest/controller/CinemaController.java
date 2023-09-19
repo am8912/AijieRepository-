@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
@@ -62,5 +64,10 @@ public class CinemaController {
 		} else {
 			return new ResponseEntity<>("查無符合條件的使用者：" + memberName, HttpStatus.OK);
 		}
+	}
+	@GetMapping("/getMemberByWords/{name}")
+	public List<Member> getMemberByWords(@PathVariable String name){
+		return memberService.findMemberByWords(name);
+		
 	}
 }
