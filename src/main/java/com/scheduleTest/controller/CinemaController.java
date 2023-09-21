@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -69,5 +70,17 @@ public class CinemaController {
 	public List<Member> getMemberByWords(@PathVariable String name){
 		return memberService.findMemberByWords(name);
 		
+	}
+	@PostMapping("/member/create")
+	public Member createMember() {
+		Member member = new Member();
+		member.setName("mabdy");
+		member.setMail("qwe@vbn.bn");
+		member.setPassword("zxcvbnm");
+		member.setPhone("0936251474");
+		member.setGender("female");
+//		member.setBirthDate("1999/01/02");
+		
+		return null;
 	}
 }
