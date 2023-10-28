@@ -45,12 +45,9 @@ public class Member {
 	private Date registrationDate;
 	
 	@Column(name = "is_active")
-	private boolean isActive;
+	private String isActive;
 	
 	@Column(name = "membership_level")
 	private String membershipLevel;
-	
-	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders; 
 	
 }

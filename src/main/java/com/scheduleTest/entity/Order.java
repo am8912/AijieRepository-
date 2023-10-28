@@ -13,7 +13,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Integer orderId;
-
+    
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "order_date")
     private Date orderDate;
 
@@ -38,8 +39,7 @@ public class Order {
     @Column(name = "discount_amount")
     private Double discountAmount;
 
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
+    @Column(name = "member_id")
+    private Integer memberId;
 }
 

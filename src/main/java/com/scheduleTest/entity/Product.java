@@ -39,7 +39,7 @@ public class Product {
     private double rating;
 
     @Column(name = "is_available")
-    private boolean isAvailable;
+    private String isAvailable;
 
 }
 

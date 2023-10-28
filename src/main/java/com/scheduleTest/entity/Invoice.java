@@ -22,6 +22,7 @@ public class Invoice {
     @Column(name = "invoice_date")
     private Date invoiceDate;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "due_date")
     private Date dueDate;
 
@@ -41,7 +42,7 @@ public class Invoice {
     private Double totalAmount;
 
     @Column(name = "is_paid")
-    private boolean isPaid;
+    private String isPaid;
 
 }
 

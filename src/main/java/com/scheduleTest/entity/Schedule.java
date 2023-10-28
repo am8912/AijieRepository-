@@ -32,7 +32,7 @@ public class Schedule {
     private String hostName;
 
     @Column(name = "status")
-    private boolean status;
+    private String status;
 
     @Column(name = "create_date")
     private Date createDate;
