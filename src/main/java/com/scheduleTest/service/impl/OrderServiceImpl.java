@@ -50,8 +50,8 @@ public class OrderServiceImpl implements OrderService {
 	
 	// 修改
 	@Override
-	public Order update(Integer id, Order newOrder) {
-		Optional<Order> optional = orderRepository.findById(id);
+	public Order update(Order newOrder) {
+		Optional<Order> optional = orderRepository.findById(newOrder.getOrderId());
 		if(optional.isPresent()) {
 			Order order = optional.get();
 			order.setOrderDate(newOrder.getOrderDate());
@@ -62,7 +62,7 @@ public class OrderServiceImpl implements OrderService {
 			order.setCouponCode(newOrder.getCouponCode());
 			order.setTaxAmount(newOrder.getTaxAmount());
 			order.setDiscountAmount(newOrder.getDiscountAmount());
-			return orderRepository.save(order);
+			return order;
 		}
 		return	null;	
 	}

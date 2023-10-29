@@ -49,8 +49,8 @@ public class InvoiceServiceImpl implements InvoiceService{
 	
 	// 修改
 	@Override
-	public Invoice update(Integer id, Invoice newInvoice) {
-		Optional<Invoice> optional = invoiceRepository.findById(id);
+	public Invoice update(Invoice newInvoice) {
+		Optional<Invoice> optional = invoiceRepository.findById(newInvoice.getInvoiceId());
 		if(optional.isPresent()) {
 			Invoice invoice = optional.get();
 			invoice.setOrderId(newInvoice.getOrderId());
@@ -62,7 +62,7 @@ public class InvoiceServiceImpl implements InvoiceService{
 			invoice.setTaxAmount(newInvoice.getTaxAmount());
 			invoice.setTotalAmount(newInvoice.getTotalAmount());
 			invoice.setIsPaid(newInvoice.getIsPaid());
-			return invoiceRepository.save(invoice);
+			return invoice;
 		}
 		return	null;	
 	}

@@ -14,5 +14,5 @@ public interface InvoiceService {
 	
 	boolean deleteById(Integer id);
 	
-	Invoice update(Integer id, Invoice newInvoice);
+	Invoice update(Invoice newInvoice);
 }

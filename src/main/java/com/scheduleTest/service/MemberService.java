@@ -16,7 +16,7 @@ public interface MemberService {
 	
 	boolean deleteById(Integer id);
 	
-	Member update(Integer id, Member newMember);
+	Member update(Member newMember);
 	
 //	Member getMember(Integer memberId);
 //	List<Member> getMemberByName(String memberName);

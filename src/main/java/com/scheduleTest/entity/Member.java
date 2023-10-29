@@ -11,10 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.Data;
 
 @Data
 @Entity
+@DynamicUpdate
 @Table(name = "members")
 public class Member {
 	

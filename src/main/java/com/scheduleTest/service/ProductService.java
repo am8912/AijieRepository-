@@ -14,5 +14,5 @@ public interface ProductService {
 	
 	boolean deleteById(Integer id);
 	
-	Product update(Integer id, Product newProduct);
+	Product update(Product newProduct);
 }

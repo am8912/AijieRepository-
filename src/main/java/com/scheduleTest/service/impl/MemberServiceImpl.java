@@ -54,8 +54,8 @@ public class MemberServiceImpl implements MemberService {
 
 	// 修改
 	@Override
-	public Member update(Integer id, Member newMember) {
-		Optional<Member> optional = memberRepository.findById(id);
+	public Member update(Member newMember) {
+		Optional<Member> optional = memberRepository.findById(newMember.getMemberId());
 		if (optional.isPresent()) {
 			Member member = optional.get();
 			member.setFirstName(newMember.getFirstName());
@@ -67,7 +67,7 @@ public class MemberServiceImpl implements MemberService {
 			member.setRegistrationDate(newMember.getRegistrationDate());
 			member.setIsActive(newMember.getIsActive());
 			member.setMembershipLevel(newMember.getMembershipLevel());
-			return memberRepository.save(member);
+			return member;
 		}
 		return null;
 	}

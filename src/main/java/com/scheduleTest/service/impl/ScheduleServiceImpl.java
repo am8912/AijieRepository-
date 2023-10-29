@@ -50,8 +50,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 	
 	// 修改
 	@Override
-	public Schedule update(Integer id, Schedule newSchedule) {
-		Optional<Schedule> optional = scheduleRepository.findById(id);
+	public Schedule update(Schedule newSchedule) {
+		Optional<Schedule> optional = scheduleRepository.findById(newSchedule.getScheduleId());
 		if(optional.isPresent()) {
 			Schedule schedule = optional.get();
 			schedule.setJobName(newSchedule.getJobName());
@@ -64,7 +64,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 			schedule.setModifyDate(newSchedule.getModifyDate());
 			schedule.setCustomField1(newSchedule.getCustomField1());
 			schedule.setCustomField2(newSchedule.getCustomField2());
-			return scheduleRepository.save(schedule);
+			return schedule;
 		}
 		return	null;	
 	}

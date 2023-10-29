@@ -1,11 +1,15 @@
 package com.scheduleTest.entity;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.Data;
 import java.util.Date;
 
 @Data
 @Entity
+@DynamicUpdate
 @Table(name = "orders")
 public class Order {
     

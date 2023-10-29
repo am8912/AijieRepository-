@@ -50,8 +50,8 @@ public class ProductServiceImpl implements ProductService {
 
 	// 修改
 	@Override
-	public Product update(Integer id, Product newProduct) {
-		Optional<Product> optional = productRepository.findById(id);
+	public Product update(Product newProduct) {
+		Optional<Product> optional = productRepository.findById(newProduct.getProductId());
 		if (optional.isPresent()) {
 			Product product = optional.get();
 			product.setProductName(newProduct.getProductName());
@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
 			product.setReleaseDate(newProduct.getReleaseDate());
 			product.setRating(newProduct.getRating());
 			product.setIsAvailable(newProduct.getIsAvailable());
-			return productRepository.save(product);
+			return product;
 		}
 		return null;
 	}

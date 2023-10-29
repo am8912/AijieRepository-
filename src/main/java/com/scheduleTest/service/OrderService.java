@@ -15,5 +15,5 @@ public interface OrderService {
 	
 	boolean deleteById(Integer id);
 	
-	Order update(Integer id, Order newOrder);
+	Order update(Order newOrder);
 }
